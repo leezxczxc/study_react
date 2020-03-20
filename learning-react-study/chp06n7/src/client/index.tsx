@@ -3,9 +3,12 @@ import ReactDOM from "react-dom";
 
 import * as serviceWorker from "./serviceWorker";
 
-import EventPractice from "components/EventPractice_4.3";
+import IterationSample from "components/IterationSample";
+import App from 'components/App'
 
-ReactDOM.render(<EventPractice />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
+
+
 
 /* import App from 'components/sample/App';
 ReactDOM.render(
