@@ -1,8 +1,8 @@
 import React, { PureComponent, ChangeEvent } from 'react'
 
-import { EventPracticeState } from 'models/chp05/EventPracticeModels'
+import { SampleModelState } from 'models/SampleModel'
 
-class EventPractice extends PureComponent<{}, EventPracticeState> {
+class SampleComponent extends PureComponent<{}, SampleModelState> {
   state = {
     username: '',
     message: ''
@@ -46,4 +46,4 @@ class EventPractice extends PureComponent<{}, EventPracticeState> {
     )
   }
 }
-export default EventPractice
+export default SampleComponent

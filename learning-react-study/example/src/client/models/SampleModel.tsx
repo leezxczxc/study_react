@@ -1,8 +1,8 @@
 export interface HtmlInputInterface {
   target: HTMLInputElement;
 }
-export interface EventPracticeProps {}
-export interface EventPracticeState {
+export interface SampleModelProps {}
+export interface SampleModelState {
   username: String,
   message: String
 }

@@ -1,26 +1,108 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "moduleResolution": "node",
-    "outDir": "./dist",
+    // 사용할 ECMAScript 버전 설정
     "target": "es5",
+
+    // ----- module ----- //
+    // 모듈 설정
     "module": "es6",
-    "jsx": "react",
+    // 모듈 (경로 검색)해석 방식 설정(classic or node).
+    // 아래의 paths 옵션과 baseUrl 옵션에 적용된 값을 어떤식으로 해석할 것인지 설정하는 값
+    // 즉, non-relative(비 상대적. ex, import {b} from 'moduleB') module name을 어떤식으로 해석할 것인지 설정하는 값
+    // classic: 기본 값. import된 파일을 /root/ 기준으로 검색함.
+    // node: /root/node_modules/ 를 기준으로 검색
+    "moduleResolution": "node",
+    // export default 를 export 한 값들을 가지는 객체로 설정
+    // (export class Foo { member: string; } 을 하면, export default { Foo } 가 기본으로 설정)
+    "allowSyntheticDefaultImports": true,
+    // module import 시 기본 default import 이름 적용 여부
+    "esModuleInterop": false,
+    // module import시 json 포함 여부
+    "resolveJsonModule": true,
+    // ----- module ----- //
+
+    // ----- path ----- //
+
+    // non-relative module의 base directory의 이름(접근자)
     "baseUrl": ".",
+    // baseUrl 기준으로 디렉토리, 모듈 맵핑
     "paths": {
       "components/*": ["./src/client/components/*"],
       "models/*": ["./src/client/models/*"]
-    }
+    },
+    // "rootDirs": [ ], // 가상 디덱토리를 설정
+    // "rootDir": "./", // 입력파일의 rootDir 설정
+    // outDir옵션을 사용할때만 사용
+    "outDir": "./dist", // 출력할 디덱토리
+    // "outFile": "", // 단일파일로 출력시 파일명
+    // ----- path ----- //
+
+    // ----- declaration ----- //
+    // .d.ts 파일 생성 여부
+    "declaration": true,
+    // .d.ts 파일 생성 위치
+    "declarationDir": "@types",
+    // declaration 파일(.d.ts) 체크 스킵 여부
+    "skipLibCheck": true,
+    // ----- declaration ----- //
+
+    // ----- log ----- //
+    // diagnostic information 출력 여부
+    "diagnostics": false,
+    // module 경로 검색 로그 출력 여부
+    "traceResolution": true,
+    // 컴파일된 결과-만들어진 파일 이름 출력 여부
+    "listEmittedFiles": true,
+    // 컴파일된 결과-작업한 파일 이름 출력 여부
+    "listFiles": true,
+    // 에러메시지 출력 언어
+    "locale": "en",
+    // 로그 pretty 여부
+    "pretty": true,
+    // ----- log ----- //
+
+    // ----- JS ----- //
+    // 자바스크립트 파일 컴파일 허용 여부. (import add from './add.js' 와 같이 js파일 import 허용)
+    "allowJs": true,
+    // allowJs 옵션이 true일 경우, js파일의 오류 검사 수행 여부
+    "checkJs": true,
+    // js 모듈 검색 최대 깊이
+    "maxNodeModuleJsDepth": 0,
+    // ----- JS ----- //
+
+    // ----- Lint ----- //
+    // 엄격한 타입 검사 활성화 여부
+    // noImplicitAny, noImplicitThis, alwaysStrict, strictNullChecks, strictFunctionTypes
+    "strict": true,
+    // 도달 불가능한 코드에 대한 허용 여부
+    // ex) 절대 수행 되지 않는 if문
+    "allowUnreachableCode": false,
+    // 사용되지 않는 라벨 허용 여부
+    "allowUnusedLabels": false,
+    // 스위치문의 fallthrough 허용 여부(false여야 비허용)
+    "noFallthroughCasesInSwitch": false,
+    // 리턴값이 있는 함수에서, 모든 도달 가능 경로에 리턴 구문이 없는 경우 에러
+    "noImplicitReturns": true,
+    // ----- Lint ----- //
+
+    // ----- dev ----- //
+    //  source map 결과코드에 추가 여부
+    // mapRoot, sourceMap와 같이 설정 불가
+    "inlineSourceMap": false,
+    // source map 파일 생성 여부
+    "sourceMap": true,
+    // source map 파일 저장할 root directory
+    // 지정하지 않으면 변환된 파일과 동일한 directory에 저장
+    "mapRoot": "./map",
+    // ----- dev ----- //
+
+    // ----- React ----- //
+    // jsx 지원 설정
+    "jsx": "react",
+    // jsx 팩토리 함수
+    // "jsxFactory":"React.createElement"
+    // ----- React ----- //
   },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "./node_modules/**/*"
-  ]
+  "include": ["./src/**/*"], // 컴파일 할 폴더
+  "exclude": ["./node_modules/**/*"] // 컴파일 제외할 폴더
 }

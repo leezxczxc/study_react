@@ -1,12 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 
 import * as serviceWorker from './serviceWorker'
 
-import EventPractice from 'components/chp05/EventPractice'
+import SampleComponent from 'components/SampleComponent'
 
 ReactDOM.render(
-  <EventPractice />
+  <SampleComponent />
   , document.getElementById('root')
 )
 
