@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     vendor: ["react", "react-dom"],
-    app: path.resolve(__dirname, "..", "src", "client", "index.tsx")
+    app: path.resolve(__dirname, "..", "client", "src", "index.tsx")
   },
   output: {
     filename: "[name].[chunkhash].js",
@@ -15,8 +15,8 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"], // 확인 가능한 확장자로 ts, tsx 추가
     alias: {
-      components: path.resolve(__dirname, "..", "src", "client", "components"),
-      models: path.resolve(__dirname, "..", "src", "client", "models")
+      components: path.resolve(__dirname, "..", "client", "src", "components"),
+      models: path.resolve(__dirname, "..", "client", "src", "models")
     }
   },
   performance: {
@@ -41,7 +41,18 @@ module.exports = {
             loader: "awesome-typescript-loader"
           }
         ]
-      }
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
     ]
   },
   plugins: [
