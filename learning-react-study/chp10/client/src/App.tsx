@@ -1,11 +1,23 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, FunctionComponent } from 'react';
 import { Todo } from 'models/TodoModel';
 import TodoTemplate from 'components/TodoTemplate';
 import TodoList from 'components/TodoList';
 import TodoInsert from 'components/TodoInsert';
 
-const App = () => {
-  const [todos, setTodos] = useState<Array<Todo>>([
+function createBulkTodos(count: Number) {
+  const array: Array<Todo> = []
+  for (let i = 1; i <= count; i++) {
+    array.push({
+      id: i,
+      text: `할 일 ${i}`,
+      checked: false
+    })
+  }
+  return array
+}
+
+const App: FunctionComponent = () => {
+  /* const [todos, setTodos] = useState<Array<Todo>>([
     {
       id: 1,
       text: '리액트의 기초 알아보기',
@@ -21,11 +33,12 @@ const App = () => {
       text: '일정 관리 앱 만들어 보기',
       checked: false,
     },
-  ]);
+  ]); */
 
+  const [todos, setTodos] = useState<Array<Todo>>(() => createBulkTodos(2500));
   // 고유 값으로 사용 될 id
   // ref 를 사용하여 변수 담기
-  const nextId = useRef<Number>(4);
+  const nextId = useRef<Number>(2501);
 
   const onInsert = useCallback<((arg0: String) => void)> (
     text => {

@@ -5,6 +5,6 @@ module.exports = merge(config, {
   mode: "development",
   devtool: "eval-source-map",
   devServer: {
-    port: 9001
+    port: 9000
   }
 });
