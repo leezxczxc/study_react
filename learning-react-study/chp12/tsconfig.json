@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "target": "es5",
+    "module": "es6",
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["./client/src/components/*"],
+      "models/*": ["./client/src/models/*"],
+      "repositories/*": ["./client/src/repositories/*"],
+      "reduce/*": ["./client/src/reduce/*"]
+    }
+  },
+  "include": ["./client/src/**/*"],
+  "exclude": ["./node_modules/**/*"]
+}
