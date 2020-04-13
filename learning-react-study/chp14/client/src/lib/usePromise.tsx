@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { AxiosResponse } from 'axios';
 
-// type usePromiseType<R> = (promiseCreator: () => Promise<R>, deps: Array<any>) => [boolean, R | null, Object | null]
-function usePromise<T> (promiseCreator: () => Promise<AxiosResponse<T>>, deps: Array<any>): [boolean, AxiosResponse<T> | null, Object | null] {
+const usePromise = <T extends Object>(promiseCreator: () => Promise<AxiosResponse<T>>, deps: Array<any>): [boolean, AxiosResponse<T> | null, Object | null] => {
+// function usePromise<T> (promiseCreator: () => Promise<AxiosResponse<T>>, deps: Array<any>): [boolean, AxiosResponse<T> | null, Object | null] {
   // 로딩중 / 완료 / 실패에 대한 상태 관리
   const [loading, setLoading] = useState<boolean>(false);
   const [resolved, setResolved] = useState<AxiosResponse<T> | null>(null);
