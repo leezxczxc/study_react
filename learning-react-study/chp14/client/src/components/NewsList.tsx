@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 import usePromise from 'lib/usePromise'
 import { NewListProps, NewsResponse } from 'models/NewsModel'
@@ -21,7 +21,7 @@ const NewsListBlock = styled.div`
 `;
 
 const NewsList: React.FC<NewListProps> = ({ category }) => {
-  const [loading, response, error] = usePromise<NewsResponse>(() => {
+  const [loading, response, error] = usePromise<AxiosResponse<NewsResponse>>(() => {
     const query = category === 'all' ? '' : `&category=${category}`;
     return axios.get(
       `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f`,
