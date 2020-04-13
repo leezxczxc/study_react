@@ -1,16 +1,16 @@
-export type NewsItem = {
+export type Article = {
   title: String,
   description: String,
   url: String,
   urlToImage: String
 }
 
-export type NewsResponse = {
-  articles: Array<NewsItem>
+export type ArticlesResponse = {
+  articles: Array<Article>
 }
 
 export type NewsItemProps = {
-  article: NewsItem
+  article: Article
 }
 export type NewListProps = {
   category: String
