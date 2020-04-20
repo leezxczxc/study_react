@@ -6,7 +6,7 @@ export type Todo = {
   text: String
 }
 
-export type TodosState = {
+export type TodoStoreState = {
   input: String,
   id: Number,
   todos: Array<Todo>

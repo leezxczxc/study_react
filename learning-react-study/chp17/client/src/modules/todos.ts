@@ -1,6 +1,6 @@
 import { createAction, handleActions, handleAction, ReducerMapValue } from 'redux-actions'
 import produce from 'immer'
-import { Todo, TodoActionType, TodosState } from 'models/todoModel'
+import { Todo, TodoActionType, TodoStoreState } from 'models/todoModel'
 
 const CHANGE_INPUT: TodoActionType = 'todos/CHANGE_INPUT' // 인풋 값을 변경함
 const INSERT: TodoActionType = 'todos/INSERT' // 새로운 todo 를 등록함
@@ -21,7 +21,7 @@ export const insert = createAction<Todo, String>(INSERT.toString(), text => ({ i
 export const toggle = createAction<Number, Number>(TOGGLE.toString(), id => id)
 export const remove = createAction<Number, Number>(REMOVE.toString(), id => id)
 
-const initialState: TodosState = {
+const initialState: TodoStoreState = {
   input: '',
   id,
   todos: []
@@ -59,17 +59,17 @@ const initialState: TodosState = {
   },
   initialState,
 ) */
-const handleChangeInputAction: ReducerMapValue<TodosState, String> = (state, { payload: input }) =>
+const handleChangeInputAction: ReducerMapValue<TodoStoreState, String> = (state, { payload: input }) =>
   produce(state, draft => {
     draft.input = input
   }
 )
-const handleInsertAction: ReducerMapValue<TodosState, Todo> = (state, { payload: todo }) =>
+const handleInsertAction: ReducerMapValue<TodoStoreState, Todo> = (state, { payload: todo }) =>
   produce(state, draft => {
     draft.todos.push(todo)
   }
 )
-const handleToggleAction: ReducerMapValue<TodosState, Number> = (state, { payload: id }) =>
+const handleToggleAction: ReducerMapValue<TodoStoreState, Number> = (state, { payload: id }) =>
   produce(state, draft => {
     const todo: Todo | undefined = draft.todos.find(todo => todo.id === id)
     if(todo) {
@@ -77,14 +77,14 @@ const handleToggleAction: ReducerMapValue<TodosState, Number> = (state, { payloa
     }
   }
 )
-const handleRemoveAction: ReducerMapValue<TodosState, Number> = (state, { payload: id }) =>
+const handleRemoveAction: ReducerMapValue<TodoStoreState, Number> = (state, { payload: id }) =>
   produce(state, draft => {
     const index = draft.todos.findIndex(todo => todo.id === id)
     draft.todos.splice(index, 1)
   }
 )
 
-const todos = handleActions<TodosState, any>(
+const todos = handleActions<TodoStoreState, any>(
   {
     [CHANGE_INPUT.toString()]: handleChangeInputAction,
     [INSERT.toString()]: handleInsertAction,

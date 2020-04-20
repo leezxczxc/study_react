@@ -1,8 +1,8 @@
-import { CounterState } from './counterModel'
-import { TodosState } from './todoModel'
+import { CounterStoreState } from './counterModel'
+import { TodoStoreState } from './todoModel'
 
-export type AppState = {
-  counter: CounterState,
-  todos: TodosState
+export type AppStoreState = {
+  counter: CounterStoreState,
+  todos: TodoStoreState
 }
-export default AppState
+export default AppStoreState

@@ -1,6 +1,6 @@
 export interface CounterActionType extends String {}
 
-export type CounterState = {
+export type CounterStoreState = {
   number: Number
 }
 

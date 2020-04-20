@@ -5,11 +5,11 @@ import { useSelector } from 'react-redux'
 import { changeInput, insert, toggle, remove } from 'modules/todos'
 import Todos from 'components/Todos'
 import useActions from 'lib/useActions'
-import { AppState } from 'models/default'
+import { AppStoreState } from 'models/default'
 import { TodosContainerState } from 'models/todoModel'
 
 const TodosContainer = () => {
-  const { input, todos } = useSelector<AppState, TodosContainerState>(state => ({
+  const { input, todos } = useSelector<AppStoreState, TodosContainerState>(state => ({
     input: state.todos.input,
     todos: state.todos.todos
   }))
